@@ -91,3 +91,8 @@ if (!('some' in Array.prototype)) {
         return false;
     };
 }
+if(!('isArray' in Array.prototype)) {
+	Array.isArray = function (vArg) {
+		return Object.prototype.toString.call(vArg) === "[object Array]";
+	};
+}
