@@ -1,0 +1,1 @@
+my_string.replace(/[èéêë]/g, "e").replace(/[ç]/g,"c").replace(/[àâä]/g, "a").replace(/[ïî]/g,"i").replace(/[ûùü]/g,"u").replace(/[ôöó]/g,"o").replace(/\s*_/g,"").replace(/[^a-zA-z]/g,"").toLowerCase();
