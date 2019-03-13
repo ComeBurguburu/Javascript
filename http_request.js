@@ -10,18 +10,24 @@ function http(method, url, data, onSuccess, onError) {
 			if (xhttp.status >= 200 && xhttp.status < 400) {
 				try {
 					var json = JSON.parse(xhttp.responseText);
-					onSuccess(json);
+					if(onSuccess)
+						onSuccess(json);
 				} catch (e) {
+				  if(onSuccess)
 					onSuccess(xhttp.responseText);
 				}
 
 			} else {
+			  if(onError)
 				onError(xhttp.status, xhttp.statusText);
 			}
 		}
 	};
 	xhttp.open(method, url, true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
+	if(!data){
+	  data = {}
+	}
 	var urldata = Object.keys(data).map(
 		function (k) {
 			return k + "=" + encodeURI(data[k])
